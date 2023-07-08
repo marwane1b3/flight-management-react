@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./home.scss";
 import Data from "../../utils/flights-list";
 import {
@@ -7,6 +7,7 @@ import {
   Selection,
   Editing,
 } from "devextreme-react/data-grid";
+
 export default function Home() {
   const [flights, setFlights] = useState<
     {
@@ -17,6 +18,8 @@ export default function Home() {
       DESTINATION: string;
     }[]
   >();
+  const firstList: any = useRef();
+  const secondList: any = useRef();
   const [flightDetails, setFlightDetails] = useState<
     {
       CLIENT_CODE: string;
@@ -62,6 +65,13 @@ export default function Home() {
     setFlightDetails(selectedContigents[0].LIST_CONTIGENTS);
   };
 
+  const handleChangesClickFunction = () => {
+    setShowFlightDetails(false);
+
+    setFlights(firstList.current.props.dataSource);
+    setFlightDetails(secondList.current.props.dataSource);
+  };
+
   useEffect(() => {
     const parsedData: {
       IATA_AIRLINE_CODE: string;
@@ -87,6 +97,7 @@ export default function Home() {
       <div className={"content-block"}>
         <h6>Available Flights</h6>
         <DataGrid
+          ref={firstList}
           dataSource={flights}
           allowColumnReordering={true}
           onDataErrorOccurred={(e: any) => (
@@ -119,6 +130,7 @@ export default function Home() {
           <>
             <div className="spacing-list-details">
               <DataGrid
+                ref={secondList}
                 dataSource={flightDetails}
                 allowColumnReordering={true}
                 onDataErrorOccurred={(e: any) => (
@@ -128,6 +140,9 @@ export default function Home() {
                 <Selection mode="single" allowSelectAll={false} />
                 <Editing mode="row" allowUpdating={true} />
               </DataGrid>
+            </div>
+            <div className="button-container-styles">
+              <button onClick={handleChangesClickFunction}>save changes</button>
             </div>
           </>
         ) : null}

@@ -37,4 +37,24 @@
 
 .spacing-list-details {
   padding: 20px;
+}
+
+.button-container-styles {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.button-container-styles button {
+  padding-block: 10px;
+  padding-inline: 20px;
+  color: #ff5722;
+  font-size: medium;
+  letter-spacing: 1px;
+  border-radius: 25px;
+  border-style: none !important;
+}
+.button-container-styles button:hover {
+  background-color: blue !important;
+  color: #fff !important;
 }/*# sourceMappingURL=home.css.map */
