@@ -1,0 +1,18 @@
+.side-nav-inner-toolbar {
+  width: 100%;
+}
+
+#navigation-header {
+  background-color: #ff5722;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+#navigation-header .menu-button .dx-icon {
+  color: #ffffff;
+}
+.screen-x-small #navigation-header {
+  padding-left: 20px;
+}
+.dx-theme-generic #navigation-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}/*# sourceMappingURL=side-nav-inner-toolbar.css.map */
